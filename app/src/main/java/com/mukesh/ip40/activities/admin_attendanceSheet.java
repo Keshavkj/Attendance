@@ -1,9 +1,8 @@
-package com.mukesh.ip40;
+package com.mukesh.ip40.activities;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,8 +16,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mukesh.ip40.R;
 
 import java.util.ArrayList;
+import androidx.appcompat.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class admin_attendanceSheet extends AppCompatActivity {
 
@@ -26,8 +29,8 @@ public class admin_attendanceSheet extends AppCompatActivity {
     Spinner class_name;
     String classes;
     EditText date;
-    ArrayList Userlist = new ArrayList<>();
-    ArrayList Studentlist = new ArrayList<>();
+    ArrayList<String> Userlist = new ArrayList<String>();
+    ArrayList<String> Studentlist = new ArrayList<>();
 
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     DatabaseReference dbAttendance;
@@ -46,14 +49,13 @@ public class admin_attendanceSheet extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list);
         class_name = (Spinner) findViewById(R.id.spinner5);
         date = (EditText) findViewById(R.id.date);
-
         classes = class_name.getSelectedItem().toString();
 
 
 
     }
 
-    public void display_list(final ArrayList userlist) {
+    public void display_list(final ArrayList<String> userlist) {
         Studentlist.clear();
         required_date = date.getText().toString();
         dbAttendance = ref.child("attendance");
@@ -103,11 +105,16 @@ public class admin_attendanceSheet extends AppCompatActivity {
         dbStudent.orderByChild("classes").equalTo(class_name.getSelectedItem().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                    Userlist.add(dsp.child("sid").getValue().toString());
+                try {
+                    for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                        Userlist.add(dsp.child("sid").getValue().toString());
+                    }
+                    display_list(Userlist);
                 }
-                display_list(Userlist);
-
+                catch (Exception e)
+                {
+                    Toast.makeText(admin_attendanceSheet.this,"exception: "+e,Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -121,7 +128,7 @@ public class admin_attendanceSheet extends AppCompatActivity {
 
 
     }
-public void list(ArrayList studentlist){
+public void list(ArrayList<String> studentlist){
     //int color = Color.argb(255, 255, 175, 64);
 
     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, studentlist);

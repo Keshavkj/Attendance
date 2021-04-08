@@ -1,16 +1,21 @@
-package com.mukesh.ip40;
+package com.mukesh.ip40.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+
+import com.mukesh.ip40.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -66,7 +71,7 @@ public class teacherlogin extends AppCompatActivity implements AdapterView.OnIte
         basket.putString("tid", message);
 
 
-        Intent intent = new Intent(this, takeAttendance.class);
+        Intent intent = new Intent(teacherlogin.this, takeAttendance.class);
         intent.putExtras(basket);
         startActivity(intent);
     }
@@ -83,7 +88,7 @@ public class teacherlogin extends AppCompatActivity implements AdapterView.OnIte
 
 
     public void logoutTeacher(View view) {
-        Intent logoutTeacher=new Intent(teacherlogin.this,LoginActivity.class);
+        Intent logoutTeacher=new Intent(teacherlogin.this,DashboardActivity.class);
         logoutTeacher.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(logoutTeacher);
     }

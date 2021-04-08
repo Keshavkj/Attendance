@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Online Attendance System</string>
+    <string name="submit">Submit</string>
     <array name="classes">
         <item>select Class</item>>
         <item>CSE</item>
@@ -10,7 +11,6 @@
 
     </array>
     <array name="periods">
-        <item>select Period</item>>
         <item>p1</item>
         <item>p2</item>
         <item>p3</item>

@@ -1,16 +1,19 @@
-package com.mukesh.ip40;
+package com.mukesh.ip40.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mukesh.ip40.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,15 +42,13 @@ public class studentlogin extends AppCompatActivity {
     public void viewAttendance(View v){
         Bundle basket = new Bundle();
         basket.putString("sid", message);
-
-
-        Intent intent = new Intent(this, student_attendance_sheet.class);
+        Intent intent = new Intent(this, studentAttendanceActivity.class);
         intent.putExtras(basket);
         startActivity(intent);
     }
 
     public void logoutStudent(View view) {
-        Intent logoutStudent=new Intent(studentlogin.this,LoginActivity.class);
+        Intent logoutStudent=new Intent(studentlogin.this,DashboardActivity.class);
         logoutStudent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(logoutStudent);
     }

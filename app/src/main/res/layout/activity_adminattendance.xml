@@ -4,15 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.teacher_attendanceSheet"
+    tools:context=".activities.adminattendance"
     android:background="#103155">
-    <include
-        android:id="@+id/ftoolbar"
-        layout="@layout/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="8dp"
-        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,8 +13,9 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:id="@+id/editlayout"
-        android:layout_below="@id/ftoolbar"
         android:layout_weight="5">
+
+
         <EditText
             android:id="@+id/date"
             android:background="@drawable/date"
@@ -53,8 +47,8 @@
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/button1"
-            android:onClick="viewlist"
             android:textColor="#fff"
+            android:onClick="viewList"
             android:text="submit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.853"

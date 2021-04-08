@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".activities.LoginActivity"
     app:layout_constraintTop_toTopOf="@+id/spinner"
     tools:layout_editor_absoluteX="0dp"
     android:orientation="vertical"

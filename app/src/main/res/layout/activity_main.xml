@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".activities.MainActivity"
     tools:layout_editor_absoluteX="0dp"
-    android:background="@drawable/background"
+    android:background="#E4D9FF"
     android:layout_gravity="center"
     android:orientation="vertical"
     android:gravity="center"
     tools:layout_editor_absoluteY="81dp">
 
     <ImageView
-        android:layout_width="200dp"
+        android:layout_width="340dp"
         android:layout_height="200dp"
-        android:src="@drawable/icon" />
+        android:src="@drawable/soe" />
 
 
 
@@ -26,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:text="Online Attendance"
-        android:textColor="@android:color/white"
+        android:text="Online Attendance App"
+        android:textColor="#30343F"
         android:fontFamily="serif-monospace"
         android:textSize="35sp"
         android:textStyle="bold"

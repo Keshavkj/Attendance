@@ -1,8 +1,10 @@
-package com.mukesh.ip40;
+package com.mukesh.ip40.activities;
+import androidx.appcompat.widget.Toolbar;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mukesh.ip40.R;
+import com.mukesh.ip40.models.Teacher;
 
 
 public class addteacher extends AppCompatActivity {

@@ -1,8 +1,7 @@
-package com.mukesh.ip40;
+package com.mukesh.ip40.activities;
 
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,13 +11,16 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mukesh.ip40.R;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,13 +74,13 @@ public class takeAttendance extends AppCompatActivity {
         selectedItems = new ArrayList<String>();
 
         TextView classname = (TextView) findViewById(R.id.textView);
-        classname.setText("IT-X");
+        classname.setText("CSE");
 
         //to get class name from teacherlogin
         Bundle bundle1 = getIntent().getExtras();
         class_selected = bundle1.getString("class_selected");
         teacher_id = bundle1.getString("tid");
-      //  Toast.makeText(getApplicationContext(), teacher_id, Toast.LENGTH_LONG).show();
+        //  Toast.makeText(getApplicationContext(), teacher_id, Toast.LENGTH_LONG).show();
 
         classname.setText(class_selected);
 
@@ -186,11 +188,11 @@ public class takeAttendance extends AppCompatActivity {
 
         }
         catch (Exception e){
-           //Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
             File wbfile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/online_attendance/" + class_selected + ".xls");
             wb = createWorkbook(class_selected+"_month_"+date.substring(3,5));
-           // workbook = Workbook.getWorkbook(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/online_attendance/" + class_selected + ".xls"));
-             s = createSheet(wb, "month_", 0);//to create month's sheet
+            // workbook = Workbook.getWorkbook(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/online_attendance/" + class_selected + ".xls"));
+            s = createSheet(wb, "month_", 0);//to create month's sheet
         }
 
 
@@ -238,7 +240,7 @@ public class takeAttendance extends AppCompatActivity {
 
         }
         i=s.getColumns();
-       // Toast.makeText(this, i  , Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, i  , Toast.LENGTH_LONG).show();
         int j=1;
         try {
             Label newCell=new Label(i,0, date);
@@ -404,7 +406,7 @@ public class takeAttendance extends AppCompatActivity {
     public WritableSheet createSheet(WritableWorkbook wb, String sheetName, int sheetIndex){
         //create a new WritableSheet and return it
 
-            return wb.createSheet(sheetName, sheetIndex);
+        return wb.createSheet(sheetName, sheetIndex);
 
     }
 

@@ -1,11 +1,15 @@
-package com.mukesh.ip40;
+package com.mukesh.ip40.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.mukesh.ip40.R;
 
 public class MainActivity extends AppCompatActivity {
     Button button;
@@ -18,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent mainIntent = new Intent(MainActivity.this, LoginActivity.class);
+                    Intent mainIntent = new Intent(MainActivity.this, DashboardActivity.class);
                     MainActivity.this.startActivity(mainIntent);
                     MainActivity.this.finish();
                 }

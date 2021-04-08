@@ -1,4 +1,4 @@
-package com.mukesh.ip40;
+package com.mukesh.ip40.models;
 
 import android.widget.EditText;
 import android.widget.Spinner;

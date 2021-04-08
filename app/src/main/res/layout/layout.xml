@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.teacher_attendanceSheet"
+    tools:context=".activities.studentAttendanceActivity"
     android:background="#103155">
     <include
         android:id="@+id/ftoolbar"

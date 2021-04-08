@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".admin_attendanceSheet"
+    tools:context=".activities.admin_attendanceSheet"
     android:background="@drawable/background">
     <include
         android:id="@+id/ftoolbar"

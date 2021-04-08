@@ -1,23 +1,26 @@
-package com.mukesh.ip40;
+package com.mukesh.ip40.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mukesh.ip40.R;
 
 import java.util.ArrayList;
 
 public class student_attendance_sheet extends AppCompatActivity {
-  public static int TOC=1,NOP=1,NOA=1;
+  public static int count=1,P=1,A=1;
     float average= (float) 0.0;
     TextView t;
     String avg,p1,p2,p3,p4,p5,p6,p7,p8;
@@ -38,7 +41,6 @@ public class student_attendance_sheet extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         student_id = bundle.getString("sid");
         t.setText(student_id);
-
         dates.clear();
         dates.add("       Date          "+"p1  "+"p2  "+"p3  "+"p4   "+ "p5   "+"p6  "+"p7  "+"p8");
 
@@ -61,12 +63,12 @@ public class student_attendance_sheet extends AppCompatActivity {
                       //  Toast.makeText(getApplicationContext(),dsp.child(student_id).child("p1").getValue().toString(),Toast.LENGTH_LONG).show();
                         if (p1.equals("P")||p2.equals("P")||p3.equals("P")||p4.equals("P")||p5.equals("P")||p6.equals("P")||p7.equals("P")||p8.equals("P")) {
 
-                            NOP++;
-                            TOC++;
+                            P++;
+                            count++;
                         }
                         if(p1.equals("A")||p2.equals("A")||p3.equals("A")||p4.equals("A")||p5.equals("A")||p6.equals("A")||p7.equals("A")||p8.equals("A")) {
-                            NOA++;
-                            TOC++;
+                            A++;
+                            count++;
                         }
 
 
@@ -75,7 +77,7 @@ public class student_attendance_sheet extends AppCompatActivity {
 
 
                     }
-                    list(dates,NOP,TOC,NOA);
+                    list(dates,P,count,A);
 
 
                   //  Toast.makeText(getApplicationContext(), dates.toString(), Toast.LENGTH_LONG).show();
@@ -90,23 +92,10 @@ public class student_attendance_sheet extends AppCompatActivity {
             });
 
     }
-    public void list(ArrayList studentlist,int NOP,int TOC,int NOA){
+    public void list(ArrayList studentlist,int P,int count,int A){
        // Toast.makeText(this,NOP+TOC,Toast.LENGTH_LONG).show();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, studentlist);
         listView.setAdapter(adapter);
-        try {
-
-            average =(float)((NOP*100)/TOC);
-            String avg=Float.toString(average);
-            t.setText("Your Attendance is :"+avg+"%");
-            if(average>=75)
-                t.setTextColor(Color.GREEN);
-            if(average<75)
-                t.setTextColor(Color.RED);
-        }
-        catch (Exception e){e.printStackTrace();}
-
-
     }
 
 }

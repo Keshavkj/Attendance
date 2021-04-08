@@ -1,34 +1,32 @@
-package com.mukesh.ip40;
+package com.mukesh.ip40.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Message;
-import android.support.constraint.solver.SolverVariable;
-import android.support.constraint.solver.widgets.Snapshot;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.mukesh.ip40.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class adminlogin extends AppCompatActivity {
 
@@ -42,7 +40,7 @@ public class adminlogin extends AppCompatActivity {
     ArrayList Studentlist = new ArrayList<>();
 
     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-    @Override
+  @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adminlogin);
@@ -51,6 +49,7 @@ public class adminlogin extends AppCompatActivity {
         ref = FirebaseDatabase.getInstance().getReference();
         dbStudent = ref.child("Student");
         dbAttendance = ref.child("attendance");
+
 
 
 
@@ -66,7 +65,7 @@ public class adminlogin extends AppCompatActivity {
         startActivity(intent);
     }
     public void attendanceRecord(View v){
-        Intent intent = new Intent(this, admin_attendanceSheet.class);
+        Intent intent = new Intent(this, adminattendance.class);
         startActivity(intent);
     }
 
@@ -107,17 +106,18 @@ public class adminlogin extends AppCompatActivity {
 
     public void logout(View view) {
 
-        Intent logout=new Intent(adminlogin.this,LoginActivity.class);
+        Intent logout=new Intent(adminlogin.this,DashboardActivity.class);
         logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(logout);
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void changepassword(View view) {
         dbadmin=ref.child("Admin");
 
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-            alertDialog.setTitle("Type your new password");
+            alertDialog.setTitle("Set your new password");
             final LayoutInflater inflater = this.getLayoutInflater();
             View add_menu_layout = inflater.inflate(R.layout.changepassword, null);
             final EditText password=(EditText)add_menu_layout.findViewById(R.id.newpassword);

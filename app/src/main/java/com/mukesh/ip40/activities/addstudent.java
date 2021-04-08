@@ -1,18 +1,22 @@
-package com.mukesh.ip40;
+package com.mukesh.ip40.activities;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mukesh.ip40.R;
+import com.mukesh.ip40.models.Student;
 
 
 public class addstudent extends AppCompatActivity {
@@ -38,12 +42,6 @@ public class addstudent extends AppCompatActivity {
         getSupportActionBar().setTitle("Add/Remove Student");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-       /* addButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                addTeacher();
-            }
-        });*/
     }
 
     public void addStudent(View v){
